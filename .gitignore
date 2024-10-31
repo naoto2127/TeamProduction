@@ -403,8 +403,5 @@ FodyWeavers.xsd
 
 
 
-!External/Effekseer170e/lib/vs2022/MD/x64/Debug/
-!External/Effekseer170e/lib/vs2022/MD/x64/Release/
-!External/Effekseer170e/lib/vs2022/MT/x64/Debug/
-!External/Effekseer170e/lib/vs2022/MT/x64/Release/
+
 
