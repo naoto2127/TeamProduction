@@ -21,15 +21,7 @@ mono_crash.*
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
 
-# x64/Debug フォルダーとその中身を追跡
-!x64/Debug/
-!x64/Debug/**
-
-# x64/Release フォルダーとその中身を追跡
-!x64/Release/
-!x64/Release/**
 
 x86/
 [Ww][Ii][Nn]32/
