@@ -401,5 +401,5 @@ FodyWeavers.xsd
 *.cod
 *.cso
 
-!/External/Effekseer170e/lib/
-!/External/Effekseer170e/lib/*
+External/Effekseer170e/lib/*
+!External/Effekseer170e/lib/.keep
