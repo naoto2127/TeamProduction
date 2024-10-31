@@ -12,6 +12,9 @@ public:
 	Framework(HWND hWnd);
 	~Framework();
 
+	Microsoft::WRL::ComPtr<ID3D11Device> device;
+
+
 private:
 	void Update(float elapsedTime/*Elapsed seconds from last frame*/);
 	void Render(float elapsedTime/*Elapsed seconds from last frame*/);
@@ -28,5 +31,7 @@ private:
 	Audio					audio;
 	Graphics				graphics;
 	Input					input;
+
+	
 };
 

@@ -1,36 +1,37 @@
 #pragma once
 
-#include"Graphics/Sprite.h"
-#include"Scene.h"
-#include<thread>
+#include "Graphics/Sprite.h"
+#include "Scene.h"
+#include <thread>
 
-//ローディング
-class SceneLoading :public Scene
+//ローディングシーン
+class SceneLoading : public Scene
 {
 public:
-	SceneLoading(Scene*nextScene):nextScene(nextScene){}
-	~SceneLoading()override{}
+    SceneLoading(Scene* nextScene) : nextScene(nextScene){}
 
-	//初期化
-	void Initialize()override;
+    SceneLoading(){}
+    ~SceneLoading()override{}
 
-	//終了化
-	void Finalize()override;
+    //初期化
+    void Initialize() override;
 
-	//更新処理
-	void Update(float elapsedTime)override;
+    //終了化
+    void Finalize() override;
 
-	//描画処理
-	void Render()override;
+    //更新処理
+    void Update(float elapsedTime) override;
 
-private:
-	//ローディングスレッド
-	static void LoadingThread(SceneLoading* scene);
+    //描画処理
+    void Render()override;
 
 private:
-	Sprite* sprite = nullptr;
-	float angle = 0.0f;
-	Scene* nextScene = nullptr;
-	std::thread* thread = nullptr;
-	
+    //ローディングスレッド
+    static void LoadingThread(SceneLoading* scene);
+
+private:
+    Sprite* sprite = nullptr;
+    float angle = 0.0f;
+    Scene* nextScene = nullptr;
+    std::thread* thread = nullptr;
 };

@@ -108,24 +108,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="External\DirectXTex\WICTextureLoader.h" />
+    <ClInclude Include="External\Effekseer170e\include\Effekseer\Effekseer.h" />
+    <ClInclude Include="External\Effekseer170e\include\Effekseer\Effekseer.Modules.h" />
+    <ClInclude Include="External\Effekseer170e\include\Effekseer\Effekseer.SIMD.h" />
     <ClInclude Include="External\imgui\imconfig.h" />
     <ClInclude Include="External\imgui\imgui.h" />
     <ClInclude Include="External\imgui\imgui_internal.h" />
     <ClInclude Include="External\imgui\imstb_rectpack.h" />
     <ClInclude Include="External\imgui\imstb_textedit.h" />
     <ClInclude Include="External\imgui\imstb_truetype.h" />
+    <ClInclude Include="Source\cola.h" />
+    <ClInclude Include="Source\liquidManager.h" />
+    <ClInclude Include="Source\liquid.h" />
     <ClInclude Include="Source\Audio\Audio.h" />
     <ClInclude Include="Source\Audio\AudioResource.h" />
     <ClInclude Include="Source\Audio\AudioSource.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\CameraController.h" />
+    <ClInclude Include="Source\Character.h" />
     <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\Effect.h" />
     <ClInclude Include="Source\EffectManager.h" />
-    <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\EnemyManager.h" />
-    <ClInclude Include="Source\EnemySlime.h" />
     <ClInclude Include="Source\Framework.h" />
+    <ClInclude Include="Source\FrontProjectile.h" />
+    <ClInclude Include="Source\GameOver.h" />
+    <ClInclude Include="Source\gauge.h" />
     <ClInclude Include="Source\Graphics\DebugRenderer.h" />
     <ClInclude Include="Source\Graphics\Graphics.h" />
     <ClInclude Include="Source\Graphics\ImGuiRenderer.h" />
@@ -140,14 +147,19 @@
     <ClInclude Include="Source\Input\GamePad.h" />
     <ClInclude Include="Source\Input\Input.h" />
     <ClInclude Include="Source\Input\Mouse.h" />
+    <ClInclude Include="Source\item.h" />
+    <ClInclude Include="Source\itemManager.h" />
     <ClInclude Include="Source\Logger.h" />
     <ClInclude Include="Source\Mathf.h" />
+    <ClInclude Include="Source\mentos.h" />
     <ClInclude Include="Source\Misc.h" />
+    <ClInclude Include="Source\people.h" />
+    <ClInclude Include="Source\peopleManager.h" />
+    <ClInclude Include="Source\person.h" />
+    <ClInclude Include="Source\person2.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Projectile.h" />
-    <ClInclude Include="Source\ProjectileHoming.h" />
     <ClInclude Include="Source\ProjectileManager.h" />
-    <ClInclude Include="Source\ProjectileStraight.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneGame.h" />
     <ClInclude Include="Source\SceneLoading.h" />
@@ -155,9 +167,7 @@
     <ClInclude Include="Source\SceneTitle.h" />
     <ClInclude Include="Source\Stage.h" />
     <ClInclude Include="Source\StageMain.h" />
-    <ClInclude Include="Source\Character.h" />
     <ClInclude Include="Source\StageManager.h" />
-    <ClInclude Include="Source\StageMoveFloor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\DirectXTex\WICTextureLoader.cpp" />
@@ -165,6 +175,9 @@
     <ClCompile Include="External\imgui\imgui_demo.cpp" />
     <ClCompile Include="External\imgui\imgui_draw.cpp" />
     <ClCompile Include="External\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Source\cola.cpp" />
+    <ClCompile Include="Source\liquidManager.cpp" />
+    <ClCompile Include="Source\liquid.cpp" />
     <ClCompile Include="Source\Audio\Audio.cpp" />
     <ClCompile Include="Source\Audio\AudioResource.cpp" />
     <ClCompile Include="Source\Audio\AudioSource.cpp" />
@@ -174,10 +187,10 @@
     <ClCompile Include="Source\Collision.cpp" />
     <ClCompile Include="Source\Effect.cpp" />
     <ClCompile Include="Source\EffectManager.cpp" />
-    <ClCompile Include="Source\Enemy.cpp" />
-    <ClCompile Include="Source\EnemyManager.cpp" />
-    <ClCompile Include="Source\EnemySlime.cpp" />
     <ClCompile Include="Source\Framework.cpp" />
+    <ClCompile Include="Source\FrontProjectile.cpp" />
+    <ClCompile Include="Source\GameOver.cpp" />
+    <ClCompile Include="Source\gauge.cpp" />
     <ClCompile Include="Source\Graphics\DebugRenderer.cpp" />
     <ClCompile Include="Source\Graphics\Graphics.cpp" />
     <ClCompile Include="Source\Graphics\ImGuiRenderer.cpp" />
@@ -189,21 +202,25 @@
     <ClCompile Include="Source\Input\GamePad.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
     <ClCompile Include="Source\Input\Mouse.cpp" />
+    <ClCompile Include="Source\item.cpp" />
+    <ClCompile Include="Source\itemManager.cpp" />
     <ClCompile Include="Source\Logger.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Mathf.cpp" />
+    <ClCompile Include="Source\mentos.cpp" />
+    <ClCompile Include="Source\people.cpp" />
+    <ClCompile Include="Source\peopleManager.cpp" />
+    <ClCompile Include="Source\person.cpp" />
+    <ClCompile Include="Source\person2.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Projectile.cpp" />
-    <ClCompile Include="Source\ProjectileHoming.cpp" />
     <ClCompile Include="Source\ProjectileManager.cpp" />
-    <ClCompile Include="Source\ProjectileStraight.cpp" />
     <ClCompile Include="Source\SceneGame.cpp" />
     <ClCompile Include="Source\SceneLoading.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
-    <ClCompile Include="Source\SceneTitle.cpp" />
+    <ClCompile Include="Source\SceneTItle.cpp" />
     <ClCompile Include="Source\StageMain.cpp" />
     <ClCompile Include="Source\StageManager.cpp" />
-    <ClCompile Include="Source\StageMoveFloor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HLSL\Debug.hlsli" />

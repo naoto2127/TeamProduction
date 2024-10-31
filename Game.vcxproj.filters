@@ -114,31 +114,47 @@
     <ClInclude Include="Source\Input\Mouse.h">
       <Filter>Source\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\StageMain.h">
+    <ClInclude Include="Source\StageMain.h" />
+    <ClInclude Include="Source\Character.h" />
+    <ClInclude Include="Source\Player.h" />
+    <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="Source\CameraController.h" />
+    <ClInclude Include="Source\EffectManager.h" />
+    <ClInclude Include="Source\Effect.h" />
+    <ClInclude Include="External\Effekseer170e\include\Effekseer\Effekseer.h" />
+    <ClInclude Include="External\Effekseer170e\include\Effekseer\Effekseer.Modules.h" />
+    <ClInclude Include="External\Effekseer170e\include\Effekseer\Effekseer.SIMD.h" />
+    <ClInclude Include="Source\Scene.h" />
+    <ClInclude Include="Source\SceneTitle.h" />
+    <ClInclude Include="Source\SceneManager.h" />
+    <ClInclude Include="Source\SceneLoading.h" />
+    <ClInclude Include="Source\Mathf.h" />
+    <ClInclude Include="Source\Stage.h" />
+    <ClInclude Include="Source\StageManager.h" />
+    <ClInclude Include="Source\GameOver.h" />
+    <ClInclude Include="Source\Collision.h" />
+    <ClInclude Include="Source\item.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Character.h">
+    <ClInclude Include="Source\itemManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Player.h">
+    <ClInclude Include="Source\mentos.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Camera.h">
+    <ClInclude Include="Source\Cannon.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CameraController.h">
+    <ClInclude Include="Source\peopleManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Enemy.h">
+    <ClInclude Include="Source\people.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EnemyManager.h">
+    <ClInclude Include="Source\person.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EnemySlime.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collision.h">
+    <ClInclude Include="Source\gauge.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\Projectile.h">
@@ -147,40 +163,19 @@
     <ClInclude Include="Source\ProjectileManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ProjectileStraight.h">
+    <ClInclude Include="Source\FrontProjectile.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ProjectileHoming.h">
+    <ClInclude Include="Source\liquid.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EffectManager.h">
+    <ClInclude Include="Source\liquidManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Effect.h">
+    <ClInclude Include="Source\cola.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Scene.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneTitle.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneManager.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneLoading.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Mathf.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Stage.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\StageManager.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\StageMoveFloor.h">
+    <ClInclude Include="Source\person2.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -269,37 +264,13 @@
     <ClCompile Include="Source\CameraController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\EnemyManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\EnemySlime.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Enemy.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Collision.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Projectile.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ProjectileManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ProjectileStraight.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ProjectileHoming.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\EffectManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Effect.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneTitle.cpp">
+    <ClCompile Include="Source\SceneTItle.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\SceneManager.cpp">
@@ -314,7 +285,55 @@
     <ClCompile Include="Source\StageManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\StageMoveFloor.cpp">
+    <ClCompile Include="Source\GameOver.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\item.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\itemManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mentos.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Cannon.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\peopleManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\people.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\person.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gauge.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Projectile.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ProjectileManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FrontProjectile.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\liquid.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\liquidManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\cola.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\person2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

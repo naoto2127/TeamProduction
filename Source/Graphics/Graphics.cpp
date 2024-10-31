@@ -128,6 +128,103 @@ Graphics::Graphics(HWND hWnd)
 		immediateContext->RSSetViewports(1, &viewport);
 	}
 
+	{
+		D3D11_DEPTH_STENCIL_DESC depth_stencil_desc{};
+		//深度テスト ON深度書き込み ON
+		depth_stencil_desc.DepthEnable = TRUE;                         //深度テスト　ON
+		depth_stencil_desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;//深度書き込み　ON
+		depth_stencil_desc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
+		hr = device->CreateDepthStencilState(&depth_stencil_desc, depth_stencil_states[0].GetAddressOf());
+
+
+		//深度テスト ON深度書き込み OFF
+		depth_stencil_desc.DepthEnable = TRUE;
+		depth_stencil_desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+		hr = device->CreateDepthStencilState(&depth_stencil_desc, depth_stencil_states[1].GetAddressOf());
+
+
+		//深度テスト OFF深度書き込み ON
+		depth_stencil_desc.DepthEnable = FALSE;
+		depth_stencil_desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		hr = device->CreateDepthStencilState(&depth_stencil_desc, depth_stencil_states[2].GetAddressOf());
+
+
+		//深度テスト OFF深度書き込み OFF
+		depth_stencil_desc.DepthEnable = FALSE;
+		depth_stencil_desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+		hr = device->CreateDepthStencilState(&depth_stencil_desc, depth_stencil_states[3].GetAddressOf());
+
+	}
+
+	{
+		D3D11_BLEND_DESC blend_desc{};
+		//無効
+		blend_desc.AlphaToCoverageEnable = FALSE;
+		blend_desc.IndependentBlendEnable = FALSE;
+		blend_desc.RenderTarget[0].BlendEnable = FALSE;
+		blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		hr = device->CreateBlendState(&blend_desc, blend_states[0].GetAddressOf());
+
+
+		//アルファブレンディング
+		blend_desc.AlphaToCoverageEnable = FALSE;
+		blend_desc.IndependentBlendEnable = FALSE;
+		blend_desc.RenderTarget[0].BlendEnable = TRUE;
+		//sb.r=src.r*src.a
+		//sb.g=src.g*src.a
+		//sb.b=src.b*src.a
+		blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		//db.r=dst.r*(1-src.a)
+		//db.g=dst.g*(1-src.a)
+		//db.b=dst.b*(1-src.a)
+		blend_desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+		//r=db.r+sb.r
+		//g=db.g+sb.g
+		//b=db.b+sb.b
+		blend_desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+		//sb.a=src.a*1
+		blend_desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+		//db.a=dst.a*0
+		blend_desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+		//a=db+sb
+		blend_desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+
+		blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		hr = device->CreateBlendState(&blend_desc, blend_states[1].GetAddressOf());
+
+
+		//加算
+		blend_desc.AlphaToCoverageEnable = FALSE;
+		blend_desc.IndependentBlendEnable = FALSE;
+		blend_desc.RenderTarget[0].BlendEnable = TRUE;
+		blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blend_desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+		blend_desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+		blend_desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ZERO;
+		blend_desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ONE;
+		blend_desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+
+		blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		hr = device->CreateBlendState(&blend_desc, blend_states[2].GetAddressOf());
+
+
+
+		//減算
+		blend_desc.AlphaToCoverageEnable = FALSE;
+		blend_desc.IndependentBlendEnable = FALSE;
+		blend_desc.RenderTarget[0].BlendEnable = TRUE;
+		blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blend_desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+		blend_desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_REV_SUBTRACT;
+		blend_desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ZERO;
+		blend_desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ONE;
+		blend_desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+
+		blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		hr = device->CreateBlendState(&blend_desc, blend_states[3].GetAddressOf());
+
+	}
+
 	// シェーダー
 	{
 		shader = std::make_unique<LambertShader>(device.Get());

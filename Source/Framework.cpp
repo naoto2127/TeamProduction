@@ -3,11 +3,13 @@
 
 #include "Graphics/Graphics.h"
 #include "Input/Input.h"
+//#include "SceneGame.h"
 #include "SceneTitle.h"
-#include"SceneManager.h"
+#include "SceneManager.h"
 #include "Framework.h"
-#include"EffectManager.h"
+#include "EffectManager.h"
 
+//static SceneGame sceneGame;
 
 
 // 垂直同期間隔設定
@@ -19,22 +21,24 @@ Framework::Framework(HWND hWnd)
 	, input(hWnd)
 	, graphics(hWnd)
 {
-	//エフェクトマネジャー初期化
-	EffectManager::Instance().Initialize();
+	////エフェクトマネージャー初期化
+	//EffectManager::Instance().Initialize();
 
 	//シーン初期化
+	/*sceneGame.Initialize();*/
 	SceneManager::Instance().ChangeScene(new SceneTitle);
+
 }
 
 // デストラクタ
 Framework::~Framework()
 {
-	
 	//シーン終了化
+	/*sceneGame.Finalize();*/
 	SceneManager::Instance().Clear();
 
-	//エフェクトマネジャー終了化
-	EffectManager::Instance().Finalize();
+	////エフェクトマネージャー終了化
+	//EffectManager::Instance().Initialize();
 }
 
 // 更新処理
@@ -44,8 +48,8 @@ void Framework::Update(float elapsedTime/*Elapsed seconds from last frame*/)
 	input.Update();
 
 	// シーン更新処理
+	/*sceneGame.Update(elapsedTime);*/
 	SceneManager::Instance().Update(elapsedTime);
-	
 }
 
 // 描画処理
@@ -53,14 +57,15 @@ void Framework::Render(float elapsedTime/*Elapsed seconds from last frame*/)
 {
 	//別スレッド中にデバイスコンテキストが使われていた場合に
 	//同時アクセスしないように排他制御する
-	std::lock_guard<std::mutex>lock(graphics.GetMutex());
-
+	std::lock_guard<std::mutex> lock(graphics.GetMutex());
+	
 	ID3D11DeviceContext* dc = graphics.GetDeviceContext();
 
 	// IMGUIフレーム開始処理
 	graphics.GetImGuiRenderer()->NewFrame();
 
 	// シーン描画処理
+	/*sceneGame.Render();*/
 	SceneManager::Instance().Render();
 
 	// IMGUIデモウインドウ描画（IMGUI機能テスト用）
@@ -71,6 +76,7 @@ void Framework::Render(float elapsedTime/*Elapsed seconds from last frame*/)
 
 	// バックバッファに描画した画を画面に表示する。
 	graphics.GetSwapChain()->Present(syncInterval, 0);
+
 }
 
 // フレームレート計算

@@ -1,35 +1,35 @@
 #pragma once
 
-#include"Scene.h"
-
+#include "Scene.h"
 
 //シーンマネージャー
 class SceneManager
 {
 private:
-	SceneManager(){}
-	~SceneManager(){}
+    SceneManager(){}
+    ~SceneManager(){}
+
 public:
-	//唯一のインスタンス取得
-	static SceneManager& Instance()
-	{
-		static SceneManager instance;
-		return instance;
-	}
+    //唯一のインスタンス
+    static SceneManager& Instance()
+    {
+        static SceneManager instance;
+        return instance;
+    }
 
-	//更新処理
-	void Update(float elapsedTime);
+    //更新処理
+    void Update(float elapsedTime);
 
-	//描画処理
-	void Render();
+    //描画処理
+    void Render();
 
-	//シーンクリア
-	void Clear();
+    //シーンクリア
+    void Clear();
 
-	//シーン切り替え
-	void ChangeScene(Scene* scene);
+    //シーン切り替え
+    void ChangeScene(Scene* scene);
 
 private:
-	Scene* currentScene = nullptr;
-	Scene* nextScene = nullptr;
+    Scene* currentScene = nullptr;
+    Scene* nextScene = nullptr;
 };

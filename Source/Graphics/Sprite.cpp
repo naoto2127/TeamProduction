@@ -4,6 +4,8 @@
 #include "Misc.h"
 #include "Graphics/Graphics.h"
 
+
+
 // コンストラクタ
 Sprite::Sprite()
 	: Sprite(nullptr)
@@ -355,3 +357,22 @@ void Sprite::Render(ID3D11DeviceContext *immediate_context,
 	}
 }
 
+void Sprite::textout(ID3D11DeviceContext* immediate_context, std::string s, float x, float y, float w, float h, float r, float g, float b, float a)
+{
+	// 一文字文の幅と高さを計算
+	float sw = static_cast<float>(320 / 16);
+	float sh = static_cast<float>(320 / 16);
+	// 現在の文字位置(相対位置)
+	float carriage = 0;
+	// 文字数分だけ render() を呼び出す。
+	for (const char c : s)
+	{
+		LONG sx = c % 0x0F;
+		// 文字を表示。アスキーコードの位置にある文字位置を切り抜いて表示
+		Render(immediate_context, x + carriage, y, w, h, sw * (c & 0x0F), sh * (c >> 4), sw, sh, 0, r, g, b, a);
+		// 文字位置を幅分ずらす
+		carriage += w;
+
+	}
+
+}

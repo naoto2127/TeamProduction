@@ -1,57 +1,54 @@
-#include"SceneManager.h"
+#include "SceneManager.h"
 
 //更新処理
-void SceneManager::Update(float elapsedTime)
+void SceneManager::Update(float elapsedTIme)
 {
-	if (nextScene != nullptr)
-	{
-		//古いシーンを終了処理
-		Clear();
-		//currentScene->Finalize();これだけだと元々はいているアドレスが開放されていない
-		//新しいシーンを設定
-		currentScene = nextScene;
-		nextScene = nullptr;
+    if (nextScene != nullptr)
+    {
+        //古いシーンを終了処理
+        Clear();
 
-		//シーン初期化処理
-		//初期化が終わってなかったら
-		if (!currentScene->IsReady())
-		{
-			currentScene->Initialize();
-		}
-		
-		
-	}
+        //新しいシーンを設定
+        currentScene = nextScene;
+        nextScene = nullptr;
 
-	if (currentScene != nullptr)
-	{
-		currentScene->Update(elapsedTime);
-	}
+        //シーン初期化設定
+        //初期化が終わってなかったら初期化する
+        if(!currentScene->IsReady())
+        {
+            currentScene->Initialize();
+        }
+    }
+
+    if (currentScene != nullptr)
+    {
+        currentScene->Update(elapsedTIme);
+    }
 }
 
 //描画処理
 void SceneManager::Render()
 {
-	if (currentScene != nullptr)
-	{
-		currentScene -> Render();
-	}
+    if (currentScene != nullptr)
+    {
+        currentScene->Render();
+    }
 }
 
 //シーンクリア
 void SceneManager::Clear()
 {
-
-	if (currentScene != nullptr)
-	{
-		currentScene->Finalize();
-		delete currentScene;
-		currentScene = nullptr;
-	}
+    if (currentScene != nullptr)
+    {
+        currentScene->Finalize();
+        delete currentScene;
+        currentScene = nullptr;
+    }
 }
 
 //シーン切り替え
 void SceneManager::ChangeScene(Scene* scene)
 {
-	//新しいシーンを設定
-	nextScene = scene;
+    //新しいシーンを設定
+    nextScene = scene;
 }

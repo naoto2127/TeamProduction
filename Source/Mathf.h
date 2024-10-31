@@ -1,10 +1,9 @@
 #pragma once
 
-
-//@•‚“®­”Zp
+//•‚“®¬”Zp
 class Mathf
 {
 public:
-	//üŒ`•âŠ®
-	static float Lerp(float a, float b, float t);
+    //üŒ`•âŠ®
+    static float Lerp(float a, float b, float t);
 };

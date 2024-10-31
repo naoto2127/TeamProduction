@@ -1,9 +1,9 @@
 #pragma once
 
-#include<mutex>
 #include <memory>
 #include <d3d11.h>
 #include <wrl.h>
+#include <mutex>
 #include "Graphics/Shader.h"
 #include "Graphics/DebugRenderer.h"
 #include "Graphics/LineRenderer.h"
@@ -55,6 +55,11 @@ public:
 	//ミューテックス取得
 	std::mutex& GetMutex() { return mutex; }
 
+	ID3D11DepthStencilState* GetDepthStencilState(int num)const { return depth_stencil_states[num].Get(); }
+
+	ID3D11BlendState* GetBlendState(int num)const { return blend_states[num].Get(); }
+
+
 private:
 	static Graphics*								instance;
 
@@ -64,6 +69,10 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	renderTargetView;
 	Microsoft::WRL::ComPtr<ID3D11Texture2D>			depthStencilBuffer;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	depthStencilView;
+
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilState>depth_stencil_states[4];
+	
+	Microsoft::WRL::ComPtr<ID3D11BlendState>blend_states[4];
 
 	std::unique_ptr<Shader>							shader;
 	std::unique_ptr<DebugRenderer>					debugRenderer;

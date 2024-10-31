@@ -14,15 +14,15 @@ public:
 
 	struct Node
 	{
-		const char*			name;
-		Node*				parent;
+		const char* name;
+		Node* parent;
 		DirectX::XMFLOAT3	scale;
 		DirectX::XMFLOAT4	rotate;
 		DirectX::XMFLOAT3	translate;
 		DirectX::XMFLOAT4X4	localTransform;
 		DirectX::XMFLOAT4X4	worldTransform;
 
-		std::vector<Node*>	children;
+		std::vector<Node*>	children; //nodeはボーン
 	};
 
 	// 行列計算
@@ -39,27 +39,19 @@ public:
 	void UpdateAnimation(float elapsedTime);
 
 	//アニメーション再生
-	void PlayAnimation(int index,bool loop,float blendSeconds=0.2f );
+	void PlayAnimation(int index, bool loop, float blendSeconds = 0.2f);
 
 
-	//アニメーション再生中か(true...アニメーション中 false...停止)	
-	bool IsPlayAnimation()const;
-
-	//ノード検索
-	Node* FindNode(const char* name);
-
-
+	//アニメーション再生中か
+	bool IsPlayAnimation() const;
 
 private:
 	std::shared_ptr<ModelResource>	resource;
 	std::vector<Node>				nodes;
-
-	int currentAnimationIndex = -1;
+	int currentAnimationIndex = -1;//-1はアニメーションしてない状態
 	float currentAnimationSeconds = 0.0f;
-
-	bool animationLoopFlag = false;
-	bool animationEndFlag = false;
-
+	bool animationLoopFlag = false;//true...アニメーションがループする
+	bool animationEndFlag = false;//true...アニメーションが終端まで来た
 	float animationBlendTime = 0.0f;
 	float animationBlendSeconds = 0.0f;
 };
