@@ -37,8 +37,8 @@ Framework::~Framework()
 	/*sceneGame.Finalize();*/
 	SceneManager::Instance().Clear();
 
-	////エフェクトマネージャー終了化
-	//EffectManager::Instance().Initialize();
+	//エフェクトマネージャー終了化
+	EffectManager::Instance().Initialize();
 }
 
 // 更新処理
